@@ -23,8 +23,8 @@ function App(): JSX.Element {
       <Stack.Navigator screenOptions={screenOptionStyles}>
         <Stack.Screen name='Login' component={Login} options={{title: ""}} />
         <Stack.Screen name='SignUp' component={SignUp} options={{title: ""}} />
-        <Stack.Screen name='ProductForm' component={ProductForm} options={{title: ""}} />
-        <Stack.Screen name='ProductDescrition' component={ProductDescription} options={{title: ""}} />
+        <Stack.Screen name='ProductForm' component={ProductForm} options={{title: "PRODUCT FORM"}} />
+        <Stack.Screen name='ProductDescription' component={ProductDescription} options={{title: "PRODUCT DETAIL FORM"}} />
       </Stack.Navigator>
     </NavigationContainer>
   );

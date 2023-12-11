@@ -26,7 +26,7 @@ const gStyles = StyleSheet.create({
         fontWeight: '400',
     },
     margin: {
-        marginHorizontal: 50,
+        marginHorizontal: 30,
     },
     childMargin: {
         marginBottom: 20,
@@ -80,6 +80,9 @@ const gStyles = StyleSheet.create({
     },
     textCenter: {
         textAlign: 'center'
+    },
+    flex: {
+        flexDirection: 'row',
     }
 });
 
