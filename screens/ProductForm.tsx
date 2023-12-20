@@ -1,26 +1,23 @@
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { gStyles, COLORS } from "../components/Styles";
 import { useState } from 'react';
-import RadioButton from "../components/RadioBtn";
 import TextInputValidaion from "../components/TextInputValidation";
 import { Switch } from "react-native";
-
-type RadioProps = {
-    Electronics: boolean;
-    Clothing: boolean;
-    HomeAppliance: boolean;
-};
+import RadioGroup, { Option } from "../components/RadioGroup";
 
 export default function ProductForm({ navigation }: any): JSX.Element {
 
     const [validation, setValidation] = useState(false);
     const [isEnabled, setIsEnabled] = useState(false);
     const [text, onChangeText] = useState('');
-    const [radio, setRadio] = useState<RadioProps>({
-        Electronics: true,
-        Clothing: false,
-        HomeAppliance: false,
-    });
+
+    const [selectedRadio, setSelectedRadio] = useState<Option | null>({ value: "Electronics", label: "Electronics" });
+
+    const options: Option[] = [
+        { value: "Electronics", label: "Electronics" },
+        { value: "Clothing", label: "Clothing" },
+        { value: "HomeAppliance", label: "Home Appliance" },
+    ]
 
     return (
         <View style={[styles.container]}>
@@ -39,36 +36,11 @@ export default function ProductForm({ navigation }: any): JSX.Element {
                         <View style={gStyles.childMargin}>
                             <Text style={[gStyles.black, gStyles.h2, gStyles.childMargin]}>Product Category</Text>
                             <View style={gStyles.childMargin}>
-                                <TouchableOpacity style={[gStyles.flex, gStyles.childMargin]} onPress={() => setRadio(
-                                    {
-                                        Electronics: true,
-                                        Clothing: false,
-                                        HomeAppliance: false,
-                                    }
-                                )}>
-                                    <RadioButton selected={radio.Electronics} style={gStyles.margin} />
-                                    <Text style={[gStyles.black, gStyles.h3]}>Electronics</Text>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={[gStyles.flex, gStyles.childMargin]} onPress={() => setRadio(
-                                    {
-                                        Electronics: false,
-                                        Clothing: true,
-                                        HomeAppliance: false,
-                                    }
-                                )}>
-                                    <RadioButton selected={radio.Clothing} style={gStyles.margin} />
-                                    <Text style={[gStyles.black, gStyles.h3]}>Clothing</Text>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={[gStyles.flex]} onPress={() => setRadio(
-                                    {
-                                        Electronics: false,
-                                        Clothing: false,
-                                        HomeAppliance: true,
-                                    }
-                                )}>
-                                    <RadioButton selected={radio.HomeAppliance} style={gStyles.margin} />
-                                    <Text style={[gStyles.black, gStyles.h3]}>Home Appliances</Text>
-                                </TouchableOpacity>
+                                <RadioGroup
+                                    options={options}
+                                    selected={selectedRadio}
+                                    setSelected={setSelectedRadio}
+                                />
                             </View>
                         </View>
                         <View style={[gStyles.childMargin, gStyles.flex]}>
